@@ -30,7 +30,7 @@ let
 
   genTlsConfig = tls:
     {
-      SSLType = if !tls.enable then
+      TLSType = if !tls.enable then
         "None"
       else if tls.useStartTls then
         "STARTTLS"
@@ -46,6 +46,13 @@ let
       "mbsync"
       "nearFarMapping"
     ])
+    (mkRenamedOptionModule [
+      "programs"
+      "mbsync"
+      "extraConfig"
+      "account"
+      "SSLVersions"
+    ] [ "programs" "mbsync" "extraConfig" "account" "TLSVersions" ])
   ];
 
   nearFarMapping = {
