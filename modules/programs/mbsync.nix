@@ -228,6 +228,8 @@ in {
     };
 
     accounts.email.accounts = mkOption {
+      # FIXME: I want this to be the format!
+      # type = with types; attrsOf (import ./mbsync-accounts.nix);
       type = with types; attrsOf (submodule (import ./mbsync-accounts.nix));
     };
   };

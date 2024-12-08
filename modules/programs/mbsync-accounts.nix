@@ -112,6 +112,18 @@ let
   };
 
 in {
+  # Cannot do this, because extraConfig.account is an extraConfigType, so we
+  # have very little control over it.
+  # TODO: Rework this submodule to return a more well-formed attribute set for
+  # account configuration.
+  # We want to mandate the use provide TLSType for instance.
+  # imports = [
+  #   (mkRenamedOptionModule [ "extraConfig" "account" "SSLType" ]
+  #     [ "extraConfig" "account" "TLSType" ])
+  #   (mkRenamedOptionModule [ "extraConfig" "account" "SSLVersions" ]
+  #     [ "extraConfig" "account" "TLSVersions" ])
+  # ];
+
   options.mbsync = {
     enable = mkEnableOption "synchronization using mbsync";
 
